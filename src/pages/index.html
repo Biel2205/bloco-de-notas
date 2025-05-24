@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template do Electron app</title>
-
-    <link rel="stylesheet" href="../styles/styles.css">
+    <title>Bloco de Notas</title>
 </head>
 <body>
-    <h1>Welcome to Template Electron App</h1>
 
-    <p>Esse é um template em Electron</p>
-    <!-- Arquivo para manipular nosso DOM   -->
-    <script src="../js/script.js"></script>
+    <div class="container">
+        <h1>📝 Bloco de Notas</h1>
+
+        <textarea id="nota">Digite sua nota aqui...</textarea>
+
+        <button onclick="salvarNota()">Salvar Nota</button>
+
+        <h2>Notas Salvas</h2>
+        <ul id="listaNotas"></ul>
+    </div>
+
+    <script>
+        function salvarNota() {
+            const nota = document.getElementById('nota').value;
+            if (nota.trim() === '') {
+                alert('Por favor, digite uma nota antes de salvar.');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.textContent = nota;
+
+            document.getElementById('listaNotas').appendChild(li);
+
+            document.getElementById('nota').value = '';
+        }
+    </script>
+
 </body>
 </html>
